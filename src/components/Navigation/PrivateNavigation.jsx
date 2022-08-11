@@ -33,13 +33,7 @@ export const PrivateNavigation = () => {
 
           <li className="nav-item">
             <NavLink to="/posts" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-              Post list
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
-            <NavLink to="/new-post" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-              Create post
+              Contacts
             </NavLink>
           </li>
         </ul>

@@ -13,10 +13,7 @@ import { getProfileThunk } from './redux/profile/profile-thunk';
 const LoginPage = lazy(() => import('./pages/Auth/LoginPage'));
 const JoinPage = lazy(() => import('./pages/Auth/JoinPage'));
 const AccountPage = lazy(() => import('./pages/AccountPage'));
-const NewPostPage = lazy(() => import('./pages/NewPostPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const PostCommentsPage = lazy(() => import('./pages/PostCommentsPage'));
-const SinglePostPage = lazy(() => import('./pages/SinglePostPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PostListPage = lazy(() => import('./pages/PostListPage'));
 
@@ -72,33 +69,6 @@ export const App = () => {
           element={
             <Suspense fallback={<p>Loading ...</p>}>
               <PostListPage />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/posts/:postId"
-          element={
-            <Suspense fallback={<p>Loading ...</p>}>
-              <SinglePostPage />
-            </Suspense>
-          }
-        >
-          <Route
-            path="comments"
-            element={
-              <Suspense fallback={<p>Loading ...</p>}>
-                <PostCommentsPage />
-              </Suspense>
-            }
-          />
-        </Route>
-
-        <Route
-          path="/new-post"
-          element={
-            <Suspense fallback={<p>Loading ...</p>}>
-              <NewPostPage />
             </Suspense>
           }
         />
