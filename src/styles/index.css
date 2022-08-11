@@ -1,0 +1,36 @@
+:root {
+  --main: red;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.content {
+  min-height: 100vh;
+}
+
+.card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 40px;
+  right: 30%;
+}
