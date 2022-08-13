@@ -1,17 +1,32 @@
 import { Route, Routes } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getToken } from 'redux/auth/auth-selectors';
+import { getCurrentUser } from 'redux/auth/auth-operations';
 import { ContactForm } from './ContactForm/ContactForm';
 import Container from './Container/Container';
+import Home from './Home/Home';
+import RegisterForm from 'pages/Register/Register';
+import LoginForm from 'pages/Login/Login';
 import { ToastContainer } from 'react-toastify';
 import { Header } from '../pages/Header/Header'
 import { Navigation } from './Navigation/Navigation';
 import { NotFound } from '../pages/NotFound/NotFound';
 import { Login } from '../pages/Login/Login'
 import { Registred } from '../pages/Registred/Registred'
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 import 'react-toastify/dist/ReactToastify.css';
 export const App = () => {
+	const dispatch = useDispatch();
+  const token = useSelector(getToken);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch, token]);
   return (
     <>
+		<ToastContainer />
 			<Header>
           <nav>
             <Navigation />
@@ -22,12 +37,43 @@ export const App = () => {
             <Route path="/login" element={<Login />} />
 						<Route path="/login" element={<ContactForm />} />
 
-            <Route path="*" element={<NotFound />} />
+           
           </Routes>
       <Container title="Phone book">
-        <ToastContainer />
+        
         <ContactForm />
       </Container>
     </>
   );
 };
+<Routes>
+<Route path="/" element={<Home />} />
+<Route
+	path="register"
+	element={
+		<PublicRoute>
+			<RegisterForm />
+		</PublicRoute>
+	}
+/>
+<Route
+	path="login"
+	element={
+		<PublicRoute>
+			<LoginForm />
+		</PublicRoute>
+	}
+/>
+<Route
+	path="contacts"
+	element={
+		<PrivateRoute>
+			 <ContactForm />
+		</PrivateRoute>
+	}
+/>
+<Route 
+	path="*" 
+	element={<NotFound />} 
+/>
+</Routes>
