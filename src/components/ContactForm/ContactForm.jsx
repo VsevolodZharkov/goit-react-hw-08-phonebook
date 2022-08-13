@@ -55,6 +55,7 @@ export const ContactForm = () => {
 
   return (
     <>
+		  <h2>Contacts</h2>
       <form onSubmit={onSubmit}>
         <label>
           Name
