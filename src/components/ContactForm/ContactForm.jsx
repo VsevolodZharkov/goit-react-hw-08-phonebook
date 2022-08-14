@@ -9,7 +9,6 @@ import {
 } from 'redux/Contacts/contacts-operations';
 
 export const ContactForm = () => {
-	console.log(1);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(state => state.contacts.items);
