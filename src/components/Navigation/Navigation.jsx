@@ -6,9 +6,9 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogged, getUserName } from 'redux/auth/auth-selectors';
 import { logOut } from 'redux/auth/auth-operations';
-import Style from './AppBar.module.css';
+import Style from './Navigation.module.css';
 
-const Navigation = () => {
+export const Navigation = () => {
   const isLogin = useSelector(getIsLogged);
   const name = useSelector(getUserName);
   const dispatch = useDispatch();
@@ -78,4 +78,3 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;

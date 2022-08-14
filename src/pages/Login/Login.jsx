@@ -6,7 +6,7 @@ import { Box, Button } from '@mui/material';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import TextField from '@mui/material/TextField';
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -18,8 +18,6 @@ const LoginForm = () => {
     event.preventDefault();
 
     dispatch(logIn(values));
-
-    // setValues({});
   };
 
   const handleChange = event => {
@@ -69,4 +67,3 @@ const LoginForm = () => {
     </div>
   );
 };
-export default LoginForm;

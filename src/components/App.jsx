@@ -6,15 +6,13 @@ import { getCurrentUser } from 'redux/auth/auth-operations';
 import { ContactForm } from './ContactForm/ContactForm';
 import Container from './Container/Container';
 import Home from './Home/Home';
-import RegisterForm from 'pages/Register/Register';
-import LoginForm from 'pages/Login/Login';
 import { ToastContainer } from 'react-toastify';
 import { Header } from '../pages/Header/Header'
 import { Navigation } from './Navigation/Navigation';
-import { NotFound } from '../pages/NotFound/NotFound';
-import { Login } from '../pages/Login/Login'
-import { Registred } from '../pages/Registred/Registred'
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+import  { NotFound }  from '../pages/NotFound/NotFound';
+import { LoginForm } from 'pages/Login/Login';
+import { RegisterForm } from 'pages/Registred/Registred';
+import {PrivateRoute} from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import 'react-toastify/dist/ReactToastify.css';
 export const App = () => {
@@ -28,19 +26,14 @@ export const App = () => {
     <>
 		<ToastContainer />
 			<Header>
-          <nav>
             <Navigation />
-          </nav>
       </Header>
 					<Routes>
-            <Route path="/registred" element={<Registred />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/registred" element={<RegisterForm />} />
+            <Route path="/login" element={<LoginForm />} />
 						<Route path="/login" element={<ContactForm />} />
-
-           
           </Routes>
       <Container title="Phone book">
-        
         <ContactForm />
       </Container>
     </>

@@ -1,4 +1,4 @@
-import Style from './Register.module.css';
+import Style from './Registred.module.css';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 
-const RegisterForm = () => {
+export const RegisterForm = () => {
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -85,4 +85,3 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
