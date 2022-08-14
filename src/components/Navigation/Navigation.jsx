@@ -1,5 +1,3 @@
-import { Button } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogged } from 'redux/auth/auth-selectors';
@@ -34,14 +32,12 @@ export const Navigation = () => {
         <div className={Style.logged_box}>
           <div className={Style.user_box}>
           </div>
-          <Button
-            sx={{ height: '30px' }}
+          <button
+            className={Style.buttom_logout}
             onClick={handlerLogout}
-            variant="contained"
-            endIcon={<LogoutIcon />}
           >
             Log Out
-          </Button>
+          </button>
         </div>
       )}
       {!isLogin && (

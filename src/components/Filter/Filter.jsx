@@ -1,19 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Style from './Filter.module.css';
+import TextField from '@mui/material/TextField';
 
 export default function Filter({ handlerFilter }) {
-	// const dispatch = useDispatch();
+
   const name = useSelector(state => state.contacts.filter);
 
   return (
-    <label>
-      Find user by name
-      <input 
+   
+      <TextField
+			style={{marginBottom:'10px'}}
+			label="Find user by name"
+			id="outlined-filter"
 			className={Style.input}
 			type="text" 
 			name="name" 
 			value={name} 
 			onChange={handlerFilter} />
-    </label>
   );
 }

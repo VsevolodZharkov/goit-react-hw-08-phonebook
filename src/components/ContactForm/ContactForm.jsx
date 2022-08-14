@@ -7,7 +7,9 @@ import {
   deleteContact,
   fetchContacts,
 } from 'redux/Contacts/contacts-operations';
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Style from './ContactsForm.module.css';
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -52,14 +54,16 @@ export const ContactForm = () => {
     setName('');
     setNumber('');
   };
-
+	
   return (
-    <>
-		  <h2>Contacts</h2>
-      <form onSubmit={onSubmit}>
-        <label>
-          Name
-          <input
+    <div className={Style.container}>
+		  <h2 className={Style.title}>Contacts</h2>
+      <form onSubmit={onSubmit} className={Style.form}>
+        
+          <TextField
+						style={{marginBottom:'10px'}}
+					  label="Name"
+						id="outlined-name"
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -68,10 +72,10 @@ export const ContactForm = () => {
             value={name}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Number
-          <input
+          <TextField
+					  label="Number"
+						style={{marginBottom:'10px'}}
+						id="outlined-number"
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -80,10 +84,9 @@ export const ContactForm = () => {
             value={number}
             onChange={handleChange}
           />
-        </label>
-        <button type="submit">Add contact</button>
+        <Button type="submit" variant="contained">Add contact</Button>
       </form>
       <ContactList handlerDelete={handlerDelete} />
-    </>
+    </div>
   );
 };

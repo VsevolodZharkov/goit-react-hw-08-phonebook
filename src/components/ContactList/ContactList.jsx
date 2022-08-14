@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Filter from '../Filter/Filter';
 import { filterContacts } from 'redux/Contacts/contacts-actions';
+import Button from '@mui/material/Button';
+import Style from './ContactList.module.css'
 export default function ContactList({ handlerDelete }) {
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
   const filter = useSelector(state => state.contacts.filter);
-  console.log(contacts);
 
   const handlerFilter = e => {
     dispatch(filterContacts(e.target.value));
@@ -21,16 +22,16 @@ export default function ContactList({ handlerDelete }) {
   return (
     <>
       <Filter handlerFilter={handlerFilter} />
-      <ul>
+      <ul className={Style.list}>
         {filteredContacts()?.map(({ id, name, number }) => {
           return (
             <li key={id}>
               <p>
                 {name}: {number}
               </p>
-              <button type="button" onClick={() => handlerDelete(id)}>
+              <Button type="button" onClick={() => handlerDelete(id)}>
                 Delete
-              </button>
+              </Button>
             </li>
           );
         })}

@@ -6,7 +6,6 @@ import { getCurrentUser } from 'redux/auth/auth-operations';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Home } from './Home/Home';
 import { ToastContainer } from 'react-toastify';
-import { Header } from '../pages/Header/Header';
 import { Navigation } from './Navigation/Navigation';
 import { NotFound } from '../pages/NotFound/NotFound';
 import { Login } from 'pages/Login/Login';
@@ -24,9 +23,7 @@ export const App = () => {
   return (
     <>
       <ToastContainer />
-      <Header>
-        <Navigation />
-      </Header>
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
 				<Route
