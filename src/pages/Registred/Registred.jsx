@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 
-export const RegisterForm = () => {
+export const Registered = () => {
   const [values, setValues] = useState({
     name: '',
     email: '',

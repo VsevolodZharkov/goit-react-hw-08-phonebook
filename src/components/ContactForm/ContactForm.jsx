@@ -1,14 +1,15 @@
 import { addContact } from '../../redux/Contacts/contacts-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactList from '../ContactList/ContactList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import {
   deleteContact,
   fetchContacts,
 } from 'redux/Contacts/contacts-operations';
-import { useEffect } from 'react';
+
 export const ContactForm = () => {
+	console.log(1);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(state => state.contacts.items);

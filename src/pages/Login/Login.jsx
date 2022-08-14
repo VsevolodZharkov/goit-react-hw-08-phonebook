@@ -6,7 +6,7 @@ import { Box, Button } from '@mui/material';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import TextField from '@mui/material/TextField';
 
-export const LoginForm = () => {
+export const Login = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',

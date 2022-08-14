@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function Container({ title, children }) {
+export const Container = ({ title, children }) => {
   return (
     <div>
       <h2>{title}</h2>
