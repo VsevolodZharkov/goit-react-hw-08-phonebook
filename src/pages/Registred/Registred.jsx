@@ -1,102 +1,88 @@
+import Style from './Register.module.css';
+
 import { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { signIn } from 'redux/auth/auth-operations';
+import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 
-// import { loginThunk } from '../../../redux/auth/auth-thubk';
-// import { createUserService } from '../../../services/users-service'; API 
-
-const year = new Date().getFullYear();
-
-export const JoinPage = () => {
-  const dispatch = useDispatch();
-
-  const [isLoading, setIsLoading] = useState(false);
+const RegisterForm = () => {
   const [values, setValues] = useState({
+    name: '',
     email: '',
-    first_name: '',
-    last_name: '',
     password: '',
   });
 
-  const handleChange = event => {
+  const dispatch = useDispatch();
+
+  const handlerSubmit = event => {
+    event.preventDefault();
+    dispatch(signIn(values));
+  };
+
+  const handlerChange = event => {
     const { value, name } = event.target;
     setValues(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    setIsLoading(true);
-    createUserService(values)// APi 
-      .then(() => {
-        toast.success('Success');
-        dispatch(loginThunk({ email: values.email, password: values.password }))
-          .unwrap()
-          .catch(() => toast.error('Error'));
-      })
-      .catch(() => {
-        toast.error('Error');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   return (
-    <>
-      <form action="#" className="mt-5 mx-auto p-0" style={{ width: '450px' }} onSubmit={handleSubmit}>
-        <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
-
-        <div className="form-floating my-4">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="username"
-            value={values.email}
-            onChange={handleChange}
-            className="form-control"
-          />
-          <label htmlFor="email">Email address</label>
-        </div>
-
-        <div className="form-floating my-4">
-          <input
-            id="first_name"
-            name="first_name"
-            type="first_name"
-            autoComplete="off"
-            value={values.first_name}
-            onChange={handleChange}
-            className="form-control"
-          />
-          <label htmlFor="first_name">Name</label>
-        </div>
-
-        <div className="form-floating my-4">
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            value={values.password}
-            onChange={handleChange}
-            className="form-control"
-          />
-          <label htmlFor="password">Password</label>
-        </div>
-
-        <Link to="/login" className="d-block my-4">
-          Already has account?
-        </Link>
-
-        <button className="w-100 mt-2 btn btn-lg btn-primary" disabled={isLoading} type="submit">
-          {isLoading ? 'Loading ....' : 'Sign In'}
-        </button>
-        <p className="mt-5 mb-3 text-muted">© {year}</p>
-      </form>
-    </>
+    <div className={Style.form_wrapper}>
+      <h2 className={Style.label}>Sign in</h2>
+      <Box
+        className={Style.form_box}
+        component="form"
+        sx={{
+          '& > :not(style)': {
+            m: 1,
+            width: '25ch',
+            display: 'flex',
+          },
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={handlerSubmit}
+      >
+        <TextField
+          id="name"
+          name="name"
+          type="text"
+          value={values.name}
+          onChange={handlerChange}
+          label="Name"
+          variant="outlined"
+          autoComplete="name"
+        />
+        <TextField
+          id="email"
+          name="email"
+          type="email"
+          value={values.email}
+          onChange={handlerChange}
+          label="Email"
+          variant="outlined"
+          autoComplete="email"
+        />
+        <TextField
+          id="password"
+          name="password"
+          type="password"
+          value={values.password}
+          onChange={handlerChange}
+          label="Password"
+          variant="filled"
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          endIcon={<AccountBoxOutlinedIcon />}
+        >
+          Register
+        </Button>
+      </Box>
+    </div>
   );
 };
+
+export default RegisterForm;
