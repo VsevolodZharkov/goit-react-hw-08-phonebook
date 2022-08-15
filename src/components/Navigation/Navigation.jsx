@@ -21,12 +21,12 @@ export const Navigation = () => {
         >
           Home
         </NavLink>
-        <NavLink
+        {isLogin && <NavLink
           className={({ isActive }) => (isActive ? Style.active_link : Style.link_nav)}
           to="/contacts"
         >
           Contacts
-        </NavLink>
+        </NavLink>}
       </div>
       {isLogin && (
         <div className={Style.logged_box}>

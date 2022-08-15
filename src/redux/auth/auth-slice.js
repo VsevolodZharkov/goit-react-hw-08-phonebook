@@ -28,8 +28,8 @@ const authSlice = createSlice({
     [logOut.fulfilled]: (state, { payload }) => {
       state.token = '';
       state.isLogged = false;
-      state.user.name = '';
-      state.user.email = '';
+      state.user = null;
+      // state.user.email = '';
     },
     [getCurrentUser.fulfilled]: (state, { payload }) => {
       state.user = payload;
