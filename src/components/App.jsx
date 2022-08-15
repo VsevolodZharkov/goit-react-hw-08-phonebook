@@ -26,6 +26,14 @@ export const App = () => {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
+				<Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactForm />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/register"
           element={
@@ -42,14 +50,7 @@ export const App = () => {
             </PublicRoute>
           }
         />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute>
-              <ContactForm />
-            </PrivateRoute>
-          }
-        />
+      
 				<Route path="*" element={
 					<PublicRoute>
 						<NotFound />
