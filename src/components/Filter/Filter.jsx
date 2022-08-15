@@ -7,7 +7,6 @@ export default function Filter({ handlerFilter }) {
   const name = useSelector(state => state.contacts.filter);
 
   return (
-   
       <TextField
 			style={{marginBottom:'10px'}}
 			label="Find user by name"

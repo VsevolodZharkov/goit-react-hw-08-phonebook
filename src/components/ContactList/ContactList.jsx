@@ -5,6 +5,7 @@ import { filterContacts } from 'redux/Contacts/contacts-actions';
 import Button from '@mui/material/Button';
 import Style from './ContactList.module.css'
 export default function ContactList({ handlerDelete }) {
+	
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
   const filter = useSelector(state => state.contacts.filter);

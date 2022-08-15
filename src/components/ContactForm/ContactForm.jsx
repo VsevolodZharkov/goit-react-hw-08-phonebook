@@ -10,15 +10,20 @@ import {
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Style from './ContactsForm.module.css';
+import { getIsLogged } from 'redux/auth/auth-selectors';
+
 export const ContactForm = () => {
+	const isLogin = useSelector(getIsLogged);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+		if(isLogin) {
+    	dispatch(fetchContacts());
+		}
+  }, [dispatch, isLogin]);
 
   const handleChange = event => {
     const { name, value } = event.target;
